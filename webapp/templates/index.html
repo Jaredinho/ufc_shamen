@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UFC Matchup Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <main class="layout">
+        <section class="card">
+            <h1>UFC Matchup Predictor</h1>
+            <p class="subtitle">Enter two fighters and optional context to forecast the matchup.</p>
+
+            <form id="predict-form" class="form">
+                <div class="field">
+                    <label for="fighter_a">Fighter A</label>
+                    <input id="fighter_a" name="fighter_a" type="text" placeholder="e.g. Conor McGregor" list="fighters-list" autocomplete="off" required />
+                </div>
+
+                <div class="field">
+                    <label for="fighter_b">Fighter B</label>
+                    <input id="fighter_b" name="fighter_b" type="text" placeholder="e.g. Michael Chandler" list="fighters-list" autocomplete="off" required />
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="fight_date">Fight Date</label>
+                        <input id="fight_date" name="fight_date" type="date" />
+                    </div>
+                    <div class="field">
+                        <label for="weight_class">Weight Class (optional)</label>
+                        <input id="weight_class" name="weight_class" type="text" placeholder="Lightweight Bout" />
+                    </div>
+                    <div class="field">
+                        <label for="top_contribs">Top Factors</label>
+                        <input id="top_contribs" name="top_contribs" type="number" value="6" min="1" />
+                    </div>
+                </div>
+
+                <button type="submit">Predict Outcome</button>
+            </form>
+
+            <datalist id="fighters-list"></datalist>
+
+            <div id="status" class="status"></div>
+        </section>
+
+        <section id="results" class="card hidden">
+            <h2>Prediction</h2>
+            <div class="probabilities">
+                <div class="prob" id="prob-a"></div>
+                <div class="prob" id="prob-b"></div>
+            </div>
+            <h3>Key Drivers</h3>
+            <table id="contributions-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Log-Odds Impact</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <h3>Fighter Snapshots</h3>
+            <div id="snapshots" class="snapshots"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

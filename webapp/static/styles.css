@@ -1,0 +1,215 @@
+﻿:root {
+    color-scheme: light dark;
+    --bg: #090909;
+    --card: rgba(255, 255, 255, 0.08);
+    --text: #f3f3f3;
+    --accent: #e94f37;
+    --shadow: rgba(0, 0, 0, 0.35);
+    --border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(circle at top, #1f1f22, #090909 45%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+}
+
+.layout {
+    display: grid;
+    gap: 2rem;
+    width: min(1100px, 100%);
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2.5rem;
+    box-shadow: 0 35px 80px var(--shadow);
+}
+
+h1, h2, h3 {
+    margin: 0 0 1.2rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin-top: -0.7rem;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.form {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.field-group {
+    display: grid;
+    gap: 1.2rem;
+}
+
+@media (min-width: 720px) {
+    .field-group {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 0.7rem 0.9rem;
+    color: var(--text);
+    font-size: 1rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(233, 79, 55, 0.25);
+}
+
+button {
+    margin-top: 0.4rem;
+    align-self: flex-start;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 15px 30px rgba(233, 79, 55, 0.35);
+}
+
+.status {
+    min-height: 1.8rem;
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.status.error {
+    color: #ff6b6b;
+}
+
+.hidden {
+    display: none;
+}
+
+.probabilities {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+    .probabilities {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.prob {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.prob .fighter {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.prob .value {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#contributions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+#contributions-table th,
+#contributions-table td {
+    text-align: left;
+    padding: 0.65rem 0.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#contributions-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.snapshots {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 720px) {
+    .snapshots {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.snapshot-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.2rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.snapshot-card h4 {
+    margin: 0;
+}
+
+.snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.3rem 0.9rem;
+    font-size: 0.9rem;
+}
+
+.snapshot-grid span {
+    color: rgba(255, 255, 255, 0.66);
+}
+
+.snapshot-grid strong {
+    color: rgba(255, 255, 255, 0.92);
+}
